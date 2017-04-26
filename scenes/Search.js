@@ -23,7 +23,18 @@ class Search extends React.Component {
 
     renderDow(rowData){
         return (
-            <Text> {rowData.brand} - {rowData.gene} - {rowData.year} </Text>
+            <View style={styles.row}>
+                <View style={styles.brandRow}>
+                    <Text> {rowData.brand} </Text>
+                </View>
+                <View style={styles.geneRow}>
+                    <Text> {rowData.gene} </Text>
+                </View>
+                <View style={styles.yearRow}>
+                    <Text> {rowData.year} </Text>
+                </View>
+            </View>
+            
         )
     }
     
@@ -43,8 +54,24 @@ const styles = StyleSheet.create({
     container: {
         flex:1,
         justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
+    },
+    row: {
+        flex: 1,
+        justifyContent: 'center',
+        padding: 20,
+        marginBottom: 10,
+        backgroundColor: '#FFF',
+        flexDirection: "row",
+    },
+    brandRow: {
+        flex: 2,
+    },
+    geneRow: {
+        flex: 2,
+    },
+    yearRow: {
+        flex:1 ,
     },
 })
 
