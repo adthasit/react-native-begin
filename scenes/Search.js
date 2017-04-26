@@ -20,9 +20,9 @@ class Search extends React.Component {
         super();
         const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
         this.cars = [
-            { brand: "TOYOTA", gene: "YARIS", year: "2016", description: "Rental Yaris", like: 4, createdAt: new Date("2017-04-13") },
-            { brand: "HONDA", gene: "JAZZ", year: "2017", description: "Rental JAZZ", like: 5, createdAt: new Date("2017-04-12")  },
-            { brand: "HONDA", gene: "CIVIC", year: "2017", description: "Rental CIVIC", like: 6, createdAt: new Date("2017-04-11")  },
+            { brand: "TOYOTA", gene: "YARIS", year: "2016", description: "Rental Yaris", vote: 4, createdAt: new Date("2017-04-13") },
+            { brand: "HONDA", gene: "JAZZ", year: "2017", description: "Rental JAZZ", vote: 5, createdAt: new Date("2017-04-12")  },
+            { brand: "HONDA", gene: "CIVIC", year: "2017", description: "Rental CIVIC", vote: 6, createdAt: new Date("2017-04-11")  },
         ]
         this.state = {
             dataSource: ds.cloneWithRows(this.cars),

@@ -19,6 +19,20 @@ import moment from 'moment'
 
  class CarDetail extends React.Component{
 
+     constructor(){
+         super()
+         this.state = {
+             vote: 0
+         }
+     }
+
+     
+     componentWillMount() {
+         const { vote } = this.props.car;
+         this.setState({ vote: vote });
+     }
+     
+
     renderHeader(){
         const{ title } = this.props
         return (
@@ -36,15 +50,25 @@ import moment from 'moment'
         )
 
     }
+
+    voteUp(){
+        const currentVote = this.state.vote
+        this.setState({ vote: currentVote + 1 })
+    }
+
+    voteDown(){
+        const currentVote = this.state.vote
+        this.setState({ vote: currentVote - 1 })
+    }
     
 
     render(){
-
+        
+        const { vote } = this.state;
         const {
             brand,
             gene,
             year,
-            like,
             description,
             createdAt,
         } = this.props.car;
@@ -70,11 +94,11 @@ import moment from 'moment'
                                 </Text>
                             </Body>
                             <Right>
-                                <Button transparent>
+                                <Button transparent onPress= {() => this.voteUp()}>
                                     <Icon active name="arrow-up"/>
                                 </Button>
-                                <Text> { like }</Text>
-                                <Button transparent>
+                                <Text> { vote }</Text>
+                                <Button transparent onPress= {() => this.voteDown()}>
                                     <Icon active name="arrow-down"/>
                                 </Button>
                             </Right>
