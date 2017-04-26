@@ -1,6 +1,8 @@
 import React from 'react';
 import { ListView } from 'react-native';
 import { 
+    Header,
+    Title,
     Container,
     Content,
     Left,
@@ -26,6 +28,17 @@ class Search extends React.Component {
         }
     }
 
+    renderHeader(){
+        const {title} = this.props
+        return(
+            <Header>
+                <Body>
+                    <Title> {title} </Title>
+                </Body>
+            </Header>
+        )
+    }
+
     renderDow(rowData){
         return (
             <ListItem>
@@ -43,6 +56,7 @@ class Search extends React.Component {
     render() {
         return (
             <Container>
+                {this.renderHeader()}
                 <Content>
                     <ListView
                         dataSource={this.state.dataSource}
