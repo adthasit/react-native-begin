@@ -1,10 +1,15 @@
 import React from 'react';
+import { ListView } from 'react-native';
 import { 
-    StyleSheet,
+    Container,
+    Content,
+    Left,
+    Body,
+    Right,
+    ListItem,
     Text,
-    View,
-    ListView,
- } from 'react-native';
+    Icon,
+ } from 'native-base';
 
 class Search extends React.Component {
 
@@ -23,57 +28,31 @@ class Search extends React.Component {
 
     renderDow(rowData){
         return (
-            <View style={styles.row}>
-                <View style={styles.brandRow}>
+            <ListItem>
+                <Body>
                     <Text> {rowData.brand} </Text>
-                </View>
-                <View style={styles.geneRow}>
-                    <Text> {rowData.gene} </Text>
-                </View>
-                <View style={styles.yearRow}>
-                    <Text> {rowData.year} </Text>
-                </View>
-            </View>
-            
+                    <Text note> {rowData.gene} {rowData.year} </Text>
+                </Body>
+                <Right>
+                    <Icon name="arrow-forward" style={{color: "#0098ff"}}/>
+                </Right>
+            </ListItem>
         )
     }
     
     render() {
         return (
-            <View style={styles.container}>
-                <ListView
-                    dataSource={this.state.dataSource}
-                    renderRow={this.renderDow.bind(this)}
-                />
-            </View>
+            <Container>
+                <Content>
+                    <ListView
+                        dataSource={this.state.dataSource}
+                        renderRow={this.renderDow.bind(this)}
+                    />
+                </Content>
+               
+            </Container>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex:1,
-        justifyContent: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    row: {
-        flex: 1,
-        justifyContent: 'center',
-        padding: 20,
-        marginBottom: 10,
-        backgroundColor: '#FFF',
-        flexDirection: "row",
-    },
-    brandRow: {
-        flex: 2,
-    },
-    geneRow: {
-        flex: 2,
-    },
-    yearRow: {
-        flex:1 ,
-    },
-})
-
 
 export default Search;
