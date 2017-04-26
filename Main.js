@@ -16,6 +16,7 @@ import { Icon } from 'native-base'
 import {
     Search,
     Profile,
+    CarDetail,
 } from './scenes'
 
 class TabIcon extends React.Component {
@@ -42,9 +43,12 @@ class Main extends React.Component {
     componentWillMount() {
         this.scenes = Actions.create(
             <Scene key="root" tabs={true}>
-                <Scene key="tabbar" tabs={true} tabBarStyle={{backgroundColor:'#f7f7f7'}}>
-                    <Scene key="Search" component={Search} title="Search" icon={TabIcon} hideNavBar={true}/>
-                    <Scene key="Profile" component={Profile} title="Profile" icon={TabIcon} hideNavBar={true}/>
+                <Scene key="menus">
+                    <Scene key="tabbar" tabs={true} tabBarStyle={{backgroundColor:'#f7f7f7'}}>
+                        <Scene key="Search" component={Search} title="Search" icon={TabIcon} hideNavBar={true}/>
+                        <Scene key="Profile" component={Profile} title="Profile" icon={TabIcon} hideNavBar={true}/>
+                    </Scene>
+                    <Scene key="CarDetail" component={CarDetail} title="Car Detail" hideNavBar={true}/>
                 </Scene>
             </Scene>
         );

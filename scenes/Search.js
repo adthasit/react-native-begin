@@ -12,6 +12,7 @@ import {
     Text,
     Icon,
  } from 'native-base';
+ import { Actions } from 'react-native-router-flux'
 
 class Search extends React.Component {
 
@@ -41,7 +42,7 @@ class Search extends React.Component {
 
     renderDow(rowData){
         return (
-            <ListItem>
+            <ListItem onPress={() => { Actions.CarDetail({ car: rowData }) }}>
                 <Body>
                     <Text> {rowData.brand} </Text>
                     <Text note> {rowData.gene} {rowData.year} </Text>
