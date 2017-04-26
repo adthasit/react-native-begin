@@ -72,6 +72,7 @@ class Search extends React.Component {
                     <ListView
                         dataSource={dataSource}
                         renderRow={this.renderDow.bind(this)}
+                        enableEmptySections={true}
                     />
                 </Content>
                
