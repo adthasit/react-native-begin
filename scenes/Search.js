@@ -41,7 +41,7 @@ class Search extends React.Component {
                     <Title> {title} </Title>
                 </Body>
                 <Right>
-                    <Button transparent onPress={() => this.handleAdd()}>
+                    <Button transparent onPress={() => Actions.CarAdd() }>
                         <Icon name="add-circle" style={{ color: '#0098ff'}}/>
                     </Button>
                 </Right>

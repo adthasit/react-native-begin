@@ -17,6 +17,7 @@ import {
     Search,
     Profile,
     CarDetail,
+    CarAdd,
 } from './scenes'
 import { CarStore } from './stores'
 
@@ -50,6 +51,7 @@ class Main extends React.Component {
                         <Scene key="Profile" component={Profile} title="Profile" icon={TabIcon} hideNavBar={true}/>
                     </Scene>
                     <Scene key="CarDetail" component={CarDetail} title="Car Detail" hideNavBar={true}/>
+                    <Scene key="CarAdd" store={ CarStore } component={CarAdd} title="Car Add" hideNavBar={true}/>
                 </Scene>
             </Scene>
         );

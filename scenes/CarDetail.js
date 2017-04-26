@@ -15,7 +15,6 @@ import {
     Thumbnail,
  } from 'native-base';
 import { Actions } from 'react-native-router-flux'
-import moment from 'moment'
 
  class CarDetail extends React.Component{
 

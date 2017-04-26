@@ -14,9 +14,7 @@ class CarStore {
     }
 
     add(doc){
-        this.cars.push(doc)
-
-        this.refresh()
+        this.api.post('addcar', doc)
     }
 
     //replace dataSource with new cars array
