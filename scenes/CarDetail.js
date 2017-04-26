@@ -83,7 +83,7 @@ import moment from 'moment'
                                 <Icon name="car"/>
                                 <Body>
                                     <Text> { brand } { gene } { year } </Text>
-                                    <Text note> on {moment(createdAt).format("DD/MM/YYYY")} </Text>
+                                    <Text note> on { createdAt } </Text>
                                 </Body>
                             </Left>
                         </CardItem>
