@@ -1,16 +1,17 @@
-import React from 'react';
+import React from 'react'
 import { 
     StyleSheet,
     Text, 
     View 
-} from 'react-native';
+} from 'react-native'
 import { 
     Actions,
     Scene,
     Router,
     Switch,
     Modal,
- } from 'react-native-router-flux';
+ } from 'react-native-router-flux'
+import { Icon } from 'native-base'
 
 import {
     Search,
@@ -20,8 +21,17 @@ import {
 class TabIcon extends React.Component {
     render() {
         const title = this.props.title;
+        let icon = "";
+        if(title === "Search"){
+            icon = "search"
+        }else if (title === "Profile"){
+            icon = "person"
+        }
         return (
-            <Text> {title} </Text>
+            <Icon 
+                name={icon} 
+                style={{color: this.props.selected ? '#057ce4' : '#afafa4'}}
+            />
         );
     }
 }
