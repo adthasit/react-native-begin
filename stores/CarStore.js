@@ -16,6 +16,17 @@ class CarStore {
         this.dataSource = ds.cloneWithRows(this.cars)
     }
 
+    add(doc){
+        this.cars.push(doc)
+
+        this.refresh()
+    }
+
+    //replace dataSource with new cars array
+    refresh(){
+        this.dataSource = this.dataSource.cloneWithRows(this.cars)
+    }
+
 }
 
 const carStore = new CarStore();

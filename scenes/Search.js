@@ -11,6 +11,7 @@ import {
     ListItem,
     Text,
     Icon,
+    Button,
  } from 'native-base';
  import { Actions } from 'react-native-router-flux'
  import { observer } from 'mobx-react/native'
@@ -23,13 +24,27 @@ class Search extends React.Component {
         super();
     }
 
+    handleAdd(){
+        const doc = { 
+            brand: "YAMAHA", gene: "R6", year: "2017", description: "Rental YAMAHA R6", vote: 10, createdAt: new Date("2017-04-13") 
+        }
+
+        this.props.store.add(doc)
+    }
+
     renderHeader(){
         const {title} = this.props
         return(
             <Header>
+                <Left/>
                 <Body>
                     <Title> {title} </Title>
                 </Body>
+                <Right>
+                    <Button transparent onPress={() => this.handleAdd()}>
+                        <Icon name="add-circle" style={{ color: '#0098ff'}}/>
+                    </Button>
+                </Right>
             </Header>
         )
     }
