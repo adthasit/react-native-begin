@@ -10,6 +10,9 @@ import {
     Right,
     Button,
     Icon,
+    Card,
+    CardItem,
+    Thumbnail,
  } from 'native-base';
  import { Actions } from 'react-native-router-flux'
 
@@ -40,15 +43,42 @@ import {
             brand,
             gene,
             year,
+            like,
+            description,
+            createdAt,
         } = this.props.car;
 
         return (
             <Container>
                 {this.renderHeader()}
                 <Content>
-                    <Text> Brand: { brand } </Text>
-                    <Text> Gene: { gene } </Text>
-                    <Text> Year: { year } </Text>
+                    <Card>
+                        <CardItem bordered>
+                            <Left>
+                                <Icon name="car"/>
+                                <Body>
+                                    <Text> { brand } { gene } { year } </Text>
+                                    <Text note> on {createdAt.toString()} </Text>
+                                </Body>
+                            </Left>
+                        </CardItem>
+                        <CardItem>
+                            <Body>
+                                <Text>
+                                    { description }
+                                </Text>
+                            </Body>
+                            <Right>
+                                <Button transparent>
+                                    <Icon active name="arrow-up"/>
+                                </Button>
+                                <Text> { like }</Text>
+                                <Button transparent>
+                                    <Icon active name="arrow-down"/>
+                                </Button>
+                            </Right>
+                        </CardItem>
+                    </Card>
                 </Content>
             </Container>
         )
