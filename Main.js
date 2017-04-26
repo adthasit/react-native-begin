@@ -18,6 +18,7 @@ import {
     Profile,
     CarDetail,
 } from './scenes'
+import { CarStore } from './stores'
 
 class TabIcon extends React.Component {
     render() {
@@ -45,7 +46,7 @@ class Main extends React.Component {
             <Scene key="root" tabs={true}>
                 <Scene key="menus">
                     <Scene key="tabbar" tabs={true} tabBarStyle={{backgroundColor:'#f7f7f7'}}>
-                        <Scene key="Search" component={Search} title="Search" icon={TabIcon} hideNavBar={true}/>
+                        <Scene key="Search" store={ CarStore } component={Search} title="Search" icon={TabIcon} hideNavBar={true}/>
                         <Scene key="Profile" component={Profile} title="Profile" icon={TabIcon} hideNavBar={true}/>
                     </Scene>
                     <Scene key="CarDetail" component={CarDetail} title="Car Detail" hideNavBar={true}/>
