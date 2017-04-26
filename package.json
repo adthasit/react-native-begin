@@ -10,6 +10,7 @@
     "@expo/vector-icons": "^4.0.0",
     "babel": "^6.23.0",
     "babel-cli": "^6.24.1",
+    "moment": "^2.18.1",
     "native-base": "^2.1.2",
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.4",

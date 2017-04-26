@@ -14,7 +14,8 @@ import {
     CardItem,
     Thumbnail,
  } from 'native-base';
- import { Actions } from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux'
+import moment from 'moment'
 
  class CarDetail extends React.Component{
 
@@ -58,7 +59,7 @@ import {
                                 <Icon name="car"/>
                                 <Body>
                                     <Text> { brand } { gene } { year } </Text>
-                                    <Text note> on {createdAt.toString()} </Text>
+                                    <Text note> on {moment(createdAt).format("DD/MM/YYYY")} </Text>
                                 </Body>
                             </Left>
                         </CardItem>
