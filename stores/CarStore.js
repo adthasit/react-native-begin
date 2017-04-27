@@ -17,6 +17,20 @@ class CarStore {
         this.api.post('car', doc)
     }
 
+    search(search){
+
+        //initiate this self variable
+        const self = this
+
+        //call api http://localhost:80000/search?search=search
+        //then set the response to dataSource to refresh it reactively
+        this.api.get('search', {search: search})
+        .then(function(response){
+            self.dataSource = self.dataSource.cloneWithRows(response)
+        })
+
+    }
+
     //replace dataSource with new cars array
     refresh(){
         const self = this
