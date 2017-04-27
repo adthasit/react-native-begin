@@ -26,8 +26,7 @@ class CarAdd extends React.Component {
             gene: "",
             year: "",
             description: "",
-            vote: 0,
-            createdAt : "23 มิถุนายน 2559", // hardcoded
+            vote: 0
         }
     }
 
@@ -109,7 +108,7 @@ class CarAdd extends React.Component {
                             <Label>Description</Label>
                             <Input
                                 onChangeText= {(text) => this.setState({description: text })}
-                                value={ this.state.brand }
+                                value={ this.state.description }
                                 multiline={ true }
                                 numberOfLines= { 10 }
                                 style={{ height: 200, marginTop: 20 }}
