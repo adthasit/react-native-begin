@@ -29,15 +29,7 @@ class Search extends React.Component {
             search : "" // search form field value
         }
     }
-
-    handleAdd(){
-        const doc = { 
-            brand: "YAMAHA", gene: "R6", year: "2017", description: "Rental YAMAHA R6", vote: 10, createdAt: new Date("2017-04-13") 
-        }
-
-        this.props.store.add(doc)
-    }
-
+    
     renderHeader(){
         const {title} = this.props
         

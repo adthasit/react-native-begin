@@ -34,6 +34,7 @@ class CarDetail extends React.Component{
 
     renderHeader(){
         const{ title } = this.props
+        const carId = this.props.car.id
         return (
             <Header>
                 <Left>
@@ -44,7 +45,12 @@ class CarDetail extends React.Component{
                 <Body>
                     <Title> { title } </Title>
                 </Body>
-                <Right/>
+                <Right>
+                    <Button transparent onPress={()=> Actions.CommentAdd({ carId: carId})}>
+                        <Icon name="add" style={{ color: "#057ce4" }}/>
+                        <Text> Comment </Text>
+                    </Button>
+                </Right>
             </Header>
         )
 

@@ -66,6 +66,11 @@ class CarStore {
         })  
     }
 
+    //add comment to comment table with carId as first param, and doc as second
+    addComment(carId, doc){
+        this.api.post('car/'+ carId + '/comment', doc)
+    }
+
 }
 
 const carStore = new CarStore();

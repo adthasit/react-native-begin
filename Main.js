@@ -18,6 +18,7 @@ import {
     Profile,
     CarDetail,
     CarAdd,
+    CommentAdd
 } from './scenes'
 import { CarStore } from './stores'
 
@@ -52,6 +53,7 @@ class Main extends React.Component {
                     </Scene>
                     <Scene key="CarDetail" store={ CarStore } component={CarDetail} title="Car Detail" hideNavBar={true}/>
                     <Scene key="CarAdd" store={ CarStore } component={CarAdd} title="Car Add" hideNavBar={true}/>
+                    <Scene key="CommentAdd" store={ CarStore } component={CommentAdd} title="Comment Add" hideNavBar={true}/>
                 </Scene>
             </Scene>
         );
