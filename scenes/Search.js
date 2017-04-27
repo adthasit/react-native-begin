@@ -12,6 +12,8 @@ import {
     Text,
     Icon,
     Button,
+    Input,
+    Item,
  } from 'native-base';
  import { Actions } from 'react-native-router-flux'
  import { observer } from 'mobx-react/native'
@@ -22,6 +24,10 @@ class Search extends React.Component {
 
     constructor() {
         super();
+        this.state = {
+            displaySearchBar: false, // state to show n hide searchBar
+            search : "" // search form field value
+        }
     }
 
     handleAdd(){
@@ -34,19 +40,50 @@ class Search extends React.Component {
 
     renderHeader(){
         const {title} = this.props
-        return(
+        
+        let header = (
             <Header>
                 <Left/>
                 <Body>
                     <Title> {title} </Title>
                 </Body>
                 <Right>
+                    {/* set displaySearchBar state to true onPress search icon */}
+                    <Button transparent onPress={()=> this.setState({displaySearchBar: true})}>
+                        <Icon name ="search" style={{ color: '#0098ff' }}/>
+                    </Button>
                     <Button transparent onPress={() => Actions.CarAdd() }>
                         <Icon name="add-circle" style={{ color: '#0098ff'}}/>
                     </Button>
                 </Right>
             </Header>
         )
+
+        //display search form when state.displaySearchBar true
+        if(this.state.displaySearchBar){
+            header = (
+                <Header searchBar rounded>
+                    <Left>
+                        <Item>
+                            <Icon name="search"/>
+                            <Input
+                                placeholder="Search"
+                                onChangeText={(text) => this.setState({search: text})}
+                                value={this.state.search}
+                            />
+                        </Item>
+                    </Left>
+                    <Right>
+                        <Button transparent onPress={()=> this.handleSearch()}>
+                            <Text>Search</Text>
+                        </Button>
+                    </Right>
+                </Header>
+            )
+        }
+
+        return header
+        
     }
 
     renderDow(rowData){
@@ -61,6 +98,19 @@ class Search extends React.Component {
                 </Right>
             </ListItem>
         )
+    }
+
+    handleSearch() {
+
+        //get search value from search form
+        const { search } = this.state
+
+        //call sote method search
+        this.props.store.search(search)
+
+        //hide searchBar and clear search
+        this.setState({displaySearchBar: false})
+        
     }
     
     render() {
