@@ -15,20 +15,20 @@ import {
     Thumbnail,
  } from 'native-base';
 import { Actions } from 'react-native-router-flux'
+import { observer } from 'mobx-react/native'
 
- class CarDetail extends React.Component{
+@observer
+
+class CarDetail extends React.Component{
 
      constructor(){
-         super()
-         this.state = {
-             vote: 0
-         }
+         super();
      }
 
      
      componentWillMount() {
-         const { vote } = this.props.car;
-         this.setState({ vote: vote });
+         //set store.car reactively by car props from Search.js rowData
+         this.props.store.car = this.props.car;
      }
      
 
@@ -51,26 +51,35 @@ import { Actions } from 'react-native-router-flux'
     }
 
     voteUp(){
-        const currentVote = this.state.vote
-        this.setState({ vote: currentVote + 1 })
+       //get field from store.car
+       const { id, vote } = this.props.store.car
+       
+       //call method update on store
+       this.props.store.update(id, { vote: vote + 1 })
     }
 
     voteDown(){
-        const currentVote = this.state.vote
-        this.setState({ vote: currentVote - 1 })
+       //get field from store.car
+       const { id, vote } = this.props.store.car
+       
+       //call method update on store
+       this.props.store.update(id, { vote: vote - 1 })       
     }
     
 
     render(){
         
-        const { vote } = this.state;
+        //use data from server instead of static props
+       
         const {
             brand,
             gene,
             year,
             description,
             createdAt,
-        } = this.props.car;
+            vote,
+        } = this.props.store.car;
+        //const {vote} = this.state; //we don't need from state anymore
 
         return (
             <Container>

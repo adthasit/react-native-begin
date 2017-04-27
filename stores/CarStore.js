@@ -5,6 +5,7 @@ import Rest from 'fetch-on-rest'
 class CarStore {
 
     @observable dataSource;
+    @observable car = {};
 
     constructor(){
         const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
@@ -17,6 +18,18 @@ class CarStore {
         this.api.post('car', doc)
     }
 
+    update(id, doc){
+        //initiate this to self varible
+        const self = this
+
+        //call api PUT to http://localhost:8000/car/{id}, with passed data
+        this.api.put('car/'+ id, doc)
+        .then(function(){
+            //call method findOne from this class
+            self.findOne(id)
+        })
+    }
+
     search(search){
 
         //initiate this self variable
@@ -27,6 +40,20 @@ class CarStore {
         this.api.get('search', {search: search})
         .then(function(response){
             self.dataSource = self.dataSource.cloneWithRows(response)
+        })
+
+    }
+
+    findOne(id){
+        
+        //initiate this to self variable
+        const self = this
+
+        //call api GET to http://localhost:80000/search/{id} to fetch single obj
+        this.api.get('cars/'+ id)
+        .then(function(response){
+            //set single obj response to store.car reactively
+            self.car = response
         })
 
     }
