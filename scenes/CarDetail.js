@@ -119,7 +119,7 @@ class CarDetail extends React.Component{
                                 <Icon name="car"/>
                                 <Body>
                                     <Text> { brand } { gene } { year } </Text>
-                                    <Text note> on { createdAt } </Text>
+                                    <Text note>on {moment(createdAt).format("DD/MM/YYYY")}</Text>
                                 </Body>
                             </Left>
                         </CardItem>
