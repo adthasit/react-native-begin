@@ -14,7 +14,7 @@ import {
 import { Icon } from 'native-base'
 
 import {
-    Search,
+    Car,
     Profile,
     CarDetail,
     CarAdd,
@@ -26,7 +26,7 @@ class TabIcon extends React.Component {
     render() {
         const title = this.props.title;
         let icon = "";
-        if(title === "Search"){
+        if(title === "Car"){
             icon = "search"
         }else if (title === "Profile"){
             icon = "person"
@@ -48,7 +48,7 @@ class Main extends React.Component {
             <Scene key="root" tabs={true}>
                 <Scene key="menus">
                     <Scene key="tabbar" tabs={true} tabBarStyle={{backgroundColor:'#f7f7f7'}}>
-                        <Scene key="Search" store={ CarStore } component={Search} title="Search" icon={TabIcon} hideNavBar={true}/>
+                        <Scene key="Car" store={ CarStore } component={Car} title="Car" icon={TabIcon} hideNavBar={true}/>
                         <Scene key="Profile" component={Profile} title="Profile" icon={TabIcon} hideNavBar={true}/>
                     </Scene>
                     <Scene key="CarDetail" store={ CarStore } component={CarDetail} title="Car Detail" hideNavBar={true}/>

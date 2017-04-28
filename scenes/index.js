@@ -1,11 +1,11 @@
-import Search from './Search'
+import Car from './Car'
 import Profile from './Profile'
 import CarDetail from './CarDetail'
 import CarAdd from './CarAdd'
 import CommentAdd from './CommentAdd'
 
 export {
-    Search,
+    Car,
     Profile,
     CarDetail,
     CarAdd,
