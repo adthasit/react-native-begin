@@ -17,7 +17,11 @@ class CarStore {
     }
 
     add(doc){
+        const self = this
         this.api.post('car', doc)
+        .then(function(response){
+            self.refresh()
+        })
     }
 
     update(id, doc){

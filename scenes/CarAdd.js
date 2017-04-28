@@ -61,7 +61,7 @@ class CarAdd extends React.Component {
         this.props.store.add(this.state)
 
         //refresh dataSource to the latest update reactively
-        this.props.store.refresh()
+        //this.props.store.refresh()
 
         //clear the from
         this.setState({
