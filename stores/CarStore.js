@@ -6,10 +6,12 @@ class CarStore {
 
     @observable dataSource;
     @observable car = {};
+    @observable dataSourceComments;
 
     constructor(){
         const ds = new ListView.DataSource({rowHasChanged: (r1,r2) => r1 !== r2})
         this.dataSource = ds.cloneWithRows([])
+        this.dataSourceComments = ds.cloneWithRows([])
         this.api = new Rest("http://10.0.2.2:8000/api/v1/")
         this.refresh()
     }
@@ -61,14 +63,30 @@ class CarStore {
     //replace dataSource with new cars array
     refresh(){
         const self = this
-        this.api.get('car').then(function(response){
+        this.api.get('car')
+        .then(function(response){
             self.dataSource = self.dataSource.cloneWithRows(response)
         })  
     }
 
     //add comment to comment table with carId as first param, and doc as second
     addComment(carId, doc){
+        const self = this
         this.api.post('car/'+ carId + '/comment', doc)
+        .then(function(response){
+            self.findComments(carId)
+        })
+    }
+
+    findComments(carId){
+        const self = this
+        //call api GET http://localhost:8000/api/v1/car/{carId}/comment
+        this.api.get('car/'+ 1 + '/comment')
+        .then(function(response){
+            //console.log(response)
+            //fill dataSourceComments reactively using its response
+            self.dataSourceComments = self.dataSourceComments.cloneWithRows(response)
+        })
     }
 
 }

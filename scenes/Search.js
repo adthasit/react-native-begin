@@ -78,9 +78,16 @@ class Search extends React.Component {
         
     }
 
+    handleGoToCarDetail(rowData){
+        //find comments using API
+        this.props.store.findComments(rowData.id)
+
+        Actions.CarDetail({car: rowData})
+    }
+
     renderDow(rowData){
         return (
-            <ListItem onPress={() => { Actions.CarDetail({ car: rowData }) }}>
+            <ListItem onPress={() => this.handleGoToCarDetail(rowData)}>
                 <Body>
                     <Text> {rowData.brand} </Text>
                     <Text note> {rowData.gene} {rowData.year} </Text>

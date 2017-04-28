@@ -13,9 +13,12 @@ import {
     Card,
     CardItem,
     Thumbnail,
- } from 'native-base';
+    Footer,
+ } from 'native-base'
+import { ListView } from 'react-native'
 import { Actions } from 'react-native-router-flux'
 import { observer } from 'mobx-react/native'
+import moment from 'moment'
 
 @observer
 
@@ -56,6 +59,25 @@ class CarDetail extends React.Component{
 
     }
 
+    renderCommentRow(rowData){
+        return(
+            <Card>
+                <CardItem bordered>
+                    <Body>
+                        <Text note>Someone, on {moment(rowData.createdAt).format("DD/MM/YYYY")}</Text>
+                    </Body>
+                </CardItem>
+                <CardItem>
+                    <Body>
+                        <Text>
+                            {rowData.text}
+                        </Text>
+                    </Body>
+                </CardItem>
+            </Card>
+        )
+    }
+
     voteUp(){
        //get field from store.car
        const { id, vote } = this.props.store.car
@@ -76,7 +98,6 @@ class CarDetail extends React.Component{
     render(){
         
         //use data from server instead of static props
-       
         const {
             brand,
             gene,
@@ -88,6 +109,7 @@ class CarDetail extends React.Component{
         //const {vote} = this.state; //we don't need from state anymore
 
         return (
+            
             <Container>
                 {this.renderHeader()}
                 <Content>
@@ -119,6 +141,13 @@ class CarDetail extends React.Component{
                         </CardItem>
                     </Card>
                 </Content>
+                <Footer style={{height: 320}}>
+                    <ListView
+                        dataSource={ this.props.store.dataSourceComments }
+                        renderRow={ this.renderCommentRow.bind(this) }
+                        enableEmptySections= { true }
+                    />
+                </Footer>
             </Container>
         )
     }
