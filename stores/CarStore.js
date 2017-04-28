@@ -85,7 +85,7 @@ class CarStore {
     findComments(carId){
         const self = this
         //call api GET http://localhost:8000/api/v1/car/{carId}/comment
-        this.api.get('car/'+ 1 + '/comment')
+        this.api.get('car/'+ carId + '/comment')
         .then(function(response){
             //console.log(response)
             //fill dataSourceComments reactively using its response
