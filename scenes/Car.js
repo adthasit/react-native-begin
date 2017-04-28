@@ -40,7 +40,11 @@ class Search extends React.Component {
         
         let header = (
             <Header>
-                <Left/>
+                <Left>
+                    <Button transparent onPress={() => this.props.store.refresh()}>
+                        <Icon name="refresh" style={{ color: '#0098ff'}}/>
+                    </Button>
+                </Left>
                 <Body>
                     <Title> {title} </Title>
                 </Body>
