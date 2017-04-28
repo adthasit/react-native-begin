@@ -1,5 +1,8 @@
 import React from 'react';
-import { ListView } from 'react-native';
+import { 
+    ListView,
+    Image,
+} from 'react-native';
 import { 
     Header,
     Title,
@@ -14,6 +17,8 @@ import {
     Button,
     Input,
     Item,
+    Card,
+    CardItem,
  } from 'native-base';
  import { Actions } from 'react-native-router-flux'
  import { observer } from 'mobx-react/native'
@@ -88,13 +93,22 @@ class Search extends React.Component {
     renderDow(rowData){
         return (
             <ListItem onPress={() => this.handleGoToCarDetail(rowData)}>
-                <Body>
-                    <Text> {rowData.brand} </Text>
-                    <Text note> {rowData.gene} {rowData.year} </Text>
-                </Body>
-                <Right>
-                    <Icon name="arrow-forward" style={{color: "#0098ff"}}/>
-                </Right>
+                <Card>
+                    <CardItem onPress={() => this.handleGoToCarDetail(rowData)}>
+                        <Body>
+                            <Text> {rowData.brand} </Text>
+                            <Text note> {rowData.gene} {rowData.year} </Text>
+                        </Body>
+                        {/*<Right>
+                            <Icon name="arrow-forward" style={{color: "#0098ff"}}/>
+                        </Right>                  */}
+                    </CardItem>
+                    <CardItem cardBody onPress={() => this.handleGoToCarDetail(rowData)}>
+                        <Image source={{uri: rowData.image}}
+                        style={{width: 370, height: 250}}/>
+                    </CardItem>
+                    <CardItem style={{ justifyContent: 'space-around' }}/>        
+                </Card>
             </ListItem>
         )
     }

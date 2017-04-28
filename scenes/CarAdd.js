@@ -26,6 +26,7 @@ class CarAdd extends React.Component {
             gene: "",
             year: "",
             description: "",
+            image: "",
             vote: 0
         }
     }
@@ -69,6 +70,7 @@ class CarAdd extends React.Component {
             gene: "",
             year: "",
             description: "",
+            image: "",
         })
 
         //back to main page
@@ -102,6 +104,13 @@ class CarAdd extends React.Component {
                             <Input
                                 onChangeText= {(text) => this.setState({year: text })}
                                 value={ this.state.year }
+                            />
+                        </Item>
+                        <Item floatingLabel>
+                            <Label>Image</Label>
+                            <Input
+                                onChangeText= {(text) => this.setState({image: text })}
+                                value={ this.state.image }
                             />
                         </Item>
                         <Item floatingLabel>
