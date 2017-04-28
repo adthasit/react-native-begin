@@ -96,7 +96,7 @@ class Search extends React.Component {
 
     renderDow(rowData){
         return (
-            <ListItem onPress={() => this.handleGoToCarDetail(rowData)}>
+            <ListItem>
                 <Card>
                     <CardItem onPress={() => this.handleGoToCarDetail(rowData)}>
                         <Body>
@@ -109,7 +109,7 @@ class Search extends React.Component {
                     </CardItem>
                     <CardItem cardBody onPress={() => this.handleGoToCarDetail(rowData)}>
                         <Image source={{uri: rowData.image}}
-                        style={{width: 370, height: 250}}/>
+                        style={{resizeMode: 'cover', height: 200, flex: 1}}/>
                     </CardItem>
                     <CardItem style={{ justifyContent: 'space-around' }}/>        
                 </Card>
